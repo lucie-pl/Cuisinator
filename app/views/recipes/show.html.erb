@@ -1,0 +1,36 @@
+<div class="container">
+
+<div id="recipe-title">
+  <h1>
+    <%= @recipe.title %>
+  </h1>
+</div>
+
+<div id="recipe-description">
+  <p>
+  <%= @recipe.description %>
+  </p>
+</div>
+
+<div id="recipe-image">
+  <p>
+  <%= image_tag @recipe.image, width: "50%", heigth: "50%" %>
+  </p>
+</div>
+
+<div id="recipe-ingredients">
+  <p>
+    <%= @recipe.unities.unity %>
+  </p>
+</div>
+
+<div id="recipe-instruction">
+  <p>
+    <%= @recipe.instruction %>
+  </p>
+</div>
+
+
+<br><br>
+<%= link_to "< Back to recipes' list", recipes_path %>
+</div>
