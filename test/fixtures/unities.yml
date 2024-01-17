@@ -5,3 +5,6 @@ one:
 
 two:
   unity: 'km'
+
+no_unit:
+  unity: 'kg'

@@ -1,7 +1,8 @@
 require "test_helper"
 
 class RecipesControllerTest < ActionDispatch::IntegrationTest
-  # test "the truth" do
-  #   assert true
+  # test "sandwich au jambon has 2 RI pain and jambon" do
+  #   q = recipe(:sandwich_jambon)
+  #   assert q.valid?
   # end
 end

@@ -6,8 +6,8 @@ one:
   unity: one
   quantity: one
 
-two:
-  recipe: two
-  ingredient: two
-  unity: two
-  quantity: two
+ri_pain:
+  recipe: sandwich_jambon
+  ingredient: pain
+  unity: un
+  quantity: no_unit

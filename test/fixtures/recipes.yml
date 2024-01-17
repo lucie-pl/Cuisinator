@@ -1,10 +1,10 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  title: MyString
-  description: MyString
-  instruction: MyString
-  image: MyString
+sandwich_jambon:
+  title: 'sandwich au jambon'
+  description: 'du pain et du jambon'
+  instruction: 'inst.'
+  image: 'my image'
 
 two:
   title: MyString
