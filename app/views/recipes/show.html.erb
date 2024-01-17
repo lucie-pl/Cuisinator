@@ -1,5 +1,4 @@
 <div class="container">
-
 <div id="recipe-title">
   <h1>
     <%= @recipe.title %>
@@ -20,7 +19,11 @@
 
 <div id="recipe-ingredients">
   <p>
-    <%= @recipe.unities.unity %>
+    <% @recipe.recipe_ingredients.each do |ri| %>
+    <ul>
+      <li><%= ri.ingredient.name %> <%= ri.quantity.quantity %> <%= ri.unity.unity %></li>
+    </ul>
+    <% end %>
   </p>
 </div>
 
@@ -34,3 +37,14 @@
 <br><br>
 <%= link_to "< Back to recipes' list", recipes_path %>
 </div>
+
+
+
+<!--
+<h2><%= @recipe.title %></h2>
+<ul>
+  <% @recipe.ingredients.each do |ingredient| %>
+    <li><%= ingredient.name %></li>
+  <% end %>
+</ul>
+-->
