@@ -16,6 +16,8 @@ module Cuisinator
     # Common ones are `templates`, `generators`, or `middleware`, for example.
     config.autoload_lib(ignore: %w(assets tasks))
 
+    config.web_console.whitelisted_ips = '172.17.0.0/16'
+
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files
