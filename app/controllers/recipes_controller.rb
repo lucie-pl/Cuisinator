@@ -6,23 +6,16 @@ class RecipesController < ApplicationController
 
   def new
     @recipe = Recipe.new
-    @recipe.recipe_ingredients.build
+    ri = @recipe.recipe_ingredients.build
+    ri.build_quantity
+    ri.build_unity
+    ri.build_ingredient
+
   end
 
   def create
     @recipe = Recipe.new(recipe_params)
-    # @recipe.id = params[:recipe_ingredient_id]
     if @recipe.save
-      ing = Ingredient.create(name: params[:recipe][:ingredients][:name])
-      q = Quantity.create(quantity: params[:recipe][:quantities][:quantity])
-      u = Unity.create(unity: params[:recipe][:unities][:unity])
-
-      @recipe.recipe_ingredients.create(
-          recipe_id: @recipe.id,
-          ingredient_id: ing.id,
-          unity_id: u.id,
-          quantity_id: q.id
-        )
       redirect_to @recipe, notice: 'Recipe was succesfully created'
     else
       render :new

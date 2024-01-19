@@ -2,15 +2,17 @@
 <%= simple_form_for @recipe do |f| %>
   <%= f.input :title, label: 'Titre' %>
   <%= f.input :description, label: 'Description' %>
-        <%= f.fields_for :ingredients do |ing| %>
-            <%= ing.input :name, label: 'Ingrédient' %>
-        <% end%>
-        <%= f.fields_for :quantities do |q| %>
-            <%= q.input :quantity, label: 'Quantité' %>
-        <% end%>
-        <%= f.fields_for :unities do |u| %>
-            <%= u.input :unity, label: 'Unité' %>
-        <% end%>
+  <%= f.fields_for :recipe_ingredients do |ri| %>
+    <%= ri.fields_for :ingredient do |ing| %>
+        <%= ing.input :name, label: 'Ingrédient' %>
+    <% end%>
+    <%= ri.fields_for :quantity do |q| %>
+        <%= q.input :quantity, label: 'Quantité' %>
+    <% end%>
+    <%= ri.fields_for :unity do |u| %>
+        <%= u.input :unity, label: 'Unité' %>
+    <% end%>
+  <% end%>
 
   <%= f.input :instruction, label: 'Instructions' %>
   <%= f.input :image, placeholder: "Entrer l'url de l'image" %>
