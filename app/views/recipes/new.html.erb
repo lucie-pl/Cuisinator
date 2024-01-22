@@ -1,22 +1,23 @@
 <div class="container">
-<%= simple_form_for @recipe do |f| %>
-  <%= f.input :title, label: 'Titre' %>
-  <%= f.input :description, label: 'Description' %>
-  <%= f.fields_for :recipe_ingredients do |ri| %>
-    <%= ri.fields_for :ingredient do |ing| %>
-        <%= ing.input :name, label: 'Ingrédient' %>
-    <% end%>
-    <%= ri.fields_for :quantity do |q| %>
-        <%= q.input :quantity, label: 'Quantité' %>
-    <% end%>
-    <%= ri.fields_for :unity do |u| %>
-        <%= u.input :unity, label: 'Unité' %>
-    <% end%>
-  <% end%>
+<%= form_with model: @recipe do |f| %>
+  <%= f.label :title, 'Titre' %>
+  <%= f.text_field :title %>
+  <%= f.label :description, 'Description' %>
+  <%= f.text_field :description %>
+  <%= cocooned_container(data: { controller: 'cocooned' }) do %>
+    <%= f.fields_for :recipe_ingredients do |ri| %>
+      <%= render 'recipe_ingredient_fields', f: ri %>
+    <% end %>
+    <%= cocooned_add_item_link 'add ingredient', f, :recipe_ingredients %>
 
-  <%= f.input :instruction, label: 'Instructions' %>
-  <%= f.input :image, placeholder: "Entrer l'url de l'image" %>
+  <% end %>
 
-  <%= f.button :submit, 'Ajouter ma recette' %>
+
+  <%= f.label :instruction, 'Instructions' %>
+  <%= f.text_field :instruction %>
+  <%= f.label :image, "Image" %>
+  <%= f.text_field :image, placeholder: "Entrer l'url de l'image" %>
+
+  <%= f.submit 'Ajouter ma recette' %>
 <% end %>
 </div>

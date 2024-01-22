@@ -1,0 +1,17 @@
+<%= cocooned_container do %>
+  <div class="ingredient">
+    <%= f.fields_for :ingredients do |ing| %>
+      <%= render 'ingredient_fields', f: ing %>
+    <% end %>
+  </div>
+  <div class="quantities">
+    <%= f.fields_for :quantities do |qty| %>
+      <%= render 'quantity_fields', f: qty %>
+    <% end %>
+  </div>
+  <div class="unities">
+    <%= f.fields_for :unities do |u| %>
+      <%= render 'unity_fields', f: u %>
+    <% end %>
+  </div>
+<% end %>
