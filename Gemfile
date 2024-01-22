@@ -31,7 +31,7 @@ gem 'simple_form'
 gem 'bootstrap-sass'
 gem 'sassc-rails'
 gem 'jquery-rails'
-gem 'cocoon'
+gem 'cocooned'
 
 # Use Redis adapter to run Action Cable in production
 # gem "redis", ">= 4.0.1"

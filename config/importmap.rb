@@ -5,4 +5,4 @@ pin "@hotwired/turbo-rails", to: "turbo.min.js", preload: true
 pin "@hotwired/stimulus", to: "stimulus.min.js"
 pin "@hotwired/stimulus-loading", to: "stimulus-loading.js"
 pin_all_from "app/javascript/controllers", under: "controllers"
-pin "@nathanvda/cocoon", to: "@nathanvda--cocoon.js" # @1.2.14
+pin "@notus.sh/cocooned", to: "@notus.sh--cocooned.js" # @2.0.4
