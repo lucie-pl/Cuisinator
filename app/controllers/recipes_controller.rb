@@ -6,10 +6,10 @@ class RecipesController < ApplicationController
 
   def new
     @recipe = Recipe.new
-    ri = @recipe.recipe_ingredients.build
-    ri.build_quantity
-    ri.build_unity
-    ri.build_ingredient
+    # ri = @recipe.recipe_ingredients.build
+    # ri.build_quantity
+    # ri.build_unity
+    # ri.build_ingredient
 
   end
 
@@ -38,6 +38,10 @@ class RecipesController < ApplicationController
   end
 
   def recipe_params
+# TODO: have the new.html.erb give this controller:
+# ingredient_attributes, quantity_attributes and unity_attributes.
+# Until then, use this combined with the private functions in
+# recipe_ingredients model to workaround the issue.
     params.require(:recipe).permit(
       :title,
       :description,
@@ -49,9 +53,9 @@ class RecipesController < ApplicationController
         :ingredient_id,
         :quantity_id,
         :unity_id,
-        ingredient_attributes: [:name],
-        quantity_attributes: [:quantity],
-        unity_attributes: [:unity]
+        ingredients: [:name],
+        quantities: [:quantity],
+        unities: [:unity]
       ]
     )
   end
