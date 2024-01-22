@@ -1,10 +1,10 @@
 class CreateRecipeIngredients < ActiveRecord::Migration[7.1]
   def change
     create_table :recipe_ingredients do |t|
+      t.float :quantity
+      t.string :unity
       t.references :recipe, null: false, foreign_key: true
       t.references :ingredient, null: false, foreign_key: true
-      t.references :unity, null: false, foreign_key: true
-      t.references :quantity, null: false, foreign_key: true
 
       t.timestamps
     end
