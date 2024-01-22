@@ -1,29 +1,29 @@
-<%= form_with model: @recipe do |f| %>
-  <!-- Recipe fields-->
-  <%= f.label :title, "Titre" %>
-  <%= f.text_field :title %>
-  <%= f.label :description %>
-  <%= f.text_field :description %>
-   <!-- Recipe_ingredients fields-->
-  <%= f.fields_for :recipe_ingredients do |ri| %>
-    <%= f.fields_for :ingredients do |ing| %>
-      <%= ing.label :name, "Ingrédient 1" %>
-      <%= ing.text_field :name %>
+<div class="container">
+  <%= form_with model: @recipe do |f| %>
+    <!-- Recipe fields-->
+    <%= f.label :title, "Titre" %>
+    <%= f.text_field :title %>
+    <%= f.label :description %>
+    <%= f.text_field :description %>
+    <!-- Recipe_ingredients fields-->
+    <div id="add-element">
+      <%= f.fields_for :recipe_ingredients do |ri| %>
+      <%= f.fields_for :ingredients do |ing| %>
+        <%= ing.label :name, "Ingrédient" %>
+        <%= ing.text_field :name %>
+      <% end %>
     <% end %>
-    <%= f.fields_for :quantities do |q| %>
-      <%= q.label :quantity, "Quantité" %>
-      <%= q.text_field :quantity %>
-    <% end %>
-    <%= f.fields_for :unities do |u| %>
-      <%= u.label :unity, "Unité" %>
-      <%= u.text_field :unity %>
-    <% end %>
-  <% end %>
+    <%= f.label :quantity, "Quantité" %>
+    <%= f.text_field :quantity %>
+    <%= f.label :unity, "Unité" %>
+    <%= f.text_field :unity %>
+    </div>
 
-   <!-- Recipe fields-->
-  <%= f.label :instruction, "Instructions" %>
-  <%= f.text_field :instruction %>
-  <%= f.label :image, "Image" %>
-  <%= f.text_field :image, placeholder: "Entrer l'url de l'image" %>
-  <%= f.submit "Ajouter ma recette" %>
-<% end %>
+    <!-- Recipe fields-->
+    <%= f.label :instruction, "Instructions" %>
+    <%= f.text_field :instruction %>
+    <%= f.label :image, "Image" %>
+    <%= f.text_field :image, placeholder: "Entrer l'url de l'image" %>
+    <%= f.submit "Ajouter ma recette" %>
+  <% end %>
+</div>

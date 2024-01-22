@@ -21,7 +21,7 @@
   <p>
     <% @recipe.recipe_ingredients.each do |ri| %>
     <ul>
-      <li><%= ri.ingredient.name %> <%= ri.quantity.quantity %> <%= ri.unity.unity %></li>
+      <li><%= ri.ingredient.name %> <%= ri.quantity %> <%= ri.unity %></li>
     </ul>
     <% end %>
   </p>
