@@ -1,0 +1,19 @@
+<div class="container">
+
+  <%= simple_form_for @recipe do |f| %>
+    <%= f.input :title %>
+    <%= f.input :description %>
+    <h3>Ingredients</h3>
+    <div id='ingredients'>
+      <%= f.simple_fields_for :ingredients do |ing| %>
+        <%= render 'ingredient_fields', :f => ing %>
+      <% end %>
+      <div class='links'>
+        <%= link_to_add_association 'Ajouter un ingrédient', f, :ingredient %>
+      </div>
+    </div>
+    <%= f.submit 'Ajouter ma recette' %>
+  <% end %>
+
+
+</div>

@@ -6,27 +6,37 @@ class RecipesController < ApplicationController
 
   def new
     @recipe = Recipe.new
-    @recipe.recipe_ingredients.build
+    # r = @recipe.recipe_ingredients.build
+    # r.build_ingredient
+    # r.build_quantity
+    # r.build_unity
   end
 
   def create
     @recipe = Recipe.new(recipe_params)
-    # @recipe.id = params[:recipe_ingredient_id]
     if @recipe.save
-      ing = Ingredient.create(name: params[:recipe][:ingredients][:name])
-      q = Quantity.create(quantity: params[:recipe][:quantities][:quantity])
-      u = Unity.create(unity: params[:recipe][:unities][:unity])
-
-      @recipe.recipe_ingredients.create(
-          recipe_id: @recipe.id,
-          ingredient_id: ing.id,
-          unity_id: u.id,
-          quantity_id: q.id
-        )
-      redirect_to @recipe, notice: 'Recipe was succesfully created'
+      format.html { redirect_to @recipe, notice: "Recipe was successfully created."}
+      format.json { render :show, status: :created, location: @recipe }
     else
-      render :new
+      format.html { render :new }
+      format.json { render json: @recipe.errors, status: :unproccessable_entity }
     end
+    # @recipe.id = params[:recipe_ingredient_id]
+    # if @recipe.save
+    #   ing = Ingredient.create(name: params[:recipe][:ingredients][:name])
+    #   q = Quantity.create(quantity: params[:recipe][:quantities][:quantity])
+    #   u = Unity.create(unity: params[:recipe][:unities][:unity])
+
+    #   @recipe.recipe_ingredients.create(
+    #       recipe_id: @recipe.id,
+    #       ingredient_id: ing.id,
+    #       unity_id: u.id,
+    #       quantity_id: q.id
+    #     )
+    #   redirect_to @recipe, notice: 'Recipe was succesfully created'
+    # else
+    #   render :new
+    # end
   end
 
   # def edit

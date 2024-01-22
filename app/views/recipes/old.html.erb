@@ -1,12 +1,10 @@
+<div class="container">
+<!-- Recipe fields -->
 <%= simple_form_for @recipe do |f| %>
-
   <%= f.input :title %>
   <%= f.input :description %>
-  <%= f.button :submit %>
-<% end %>
 
    <!-- Recipe_ingredients fields -->
-
   <%= f.fields_for :recipe_ingredients do |ri| %>
     <%= f.fields_for :ingredients do |ing| %>
       <%= ing.label :name, "Ingrédient 1" %>
@@ -29,3 +27,4 @@
   <%= f.text_field :image, placeholder: "Entrer l'url de l'image" %>
   <%= f.submit "Ajouter ma recette" %>
 <% end %>
+</div>

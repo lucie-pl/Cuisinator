@@ -8,9 +8,9 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root to: "pages#home"
 
-  resources :recipes do
-    resources :my_recipes, only: [:create]
-  end
+  resources :recipes
+    # resources :my_recipes, only: [:create]
+  # end
 
   #TODO: add the my_recipes model and controller
     # get "/my_recipes", to: "my_recipes#index"
