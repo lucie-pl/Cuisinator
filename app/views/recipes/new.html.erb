@@ -3,21 +3,27 @@
     <!-- Recipe fields-->
     <%= f.label :title, "Titre" %>
     <%= f.text_field :title %>
-    <%= f.label :description %>
+    <%= f.label :description, 'Description' %>
     <%= f.text_field :description %>
     <!-- Recipe_ingredients fields-->
-    <div id="add-element">
-      <%= f.fields_for :recipe_ingredients do |ri| %>
+    <%= cocooned_container(data: { controller: 'cocooned'}) do %>
+      <div id="add-element">
+        <%= f.fields_for :recipe_ingredients do |ri| %>
+          <%= render 'recipe_ingredient_fields', f: ri %>
+        <% end %>
+        <p><%= cocooned_add_item_link 'Ajouter un ingrédient', f, :recipe_ingredients %></p>
+      <!--
       <%= f.fields_for :ingredients do |ing| %>
         <%= ing.label :name, "Ingrédient" %>
         <%= ing.text_field :name %>
       <% end %>
+        <%= f.label :quantity, "Quantité" %>
+        <%= f.text_field :quantity %>
+        <%= f.label :unity, "Unité" %>
+        <%= f.text_field :unity %>
+      -->
     <% end %>
-    <%= f.label :quantity, "Quantité" %>
-    <%= f.text_field :quantity %>
-    <%= f.label :unity, "Unité" %>
-    <%= f.text_field :unity %>
-    </div>
+     </div>
 
     <!-- Recipe fields-->
     <%= f.label :instruction, "Instructions" %>
