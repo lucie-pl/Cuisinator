@@ -6,14 +6,20 @@ class RecipesController < ApplicationController
 
   def new
     @recipe = Recipe.new
-    # @recipe.recipe_ingredients.build
+    @r_i = @recipe.recipe_ingredients.build
+    @r_i.build_ingredient(params[:recipe_ingredients_attributes])
 
   end
 
   def create
     @recipe = Recipe.new(recipe_params)
+    debugger
+    #params[:recipe][:recipe_ingredients_attributes].each do |ri_params|
+    #  ing = Ingredient.create(name: ri_params[:ingredients][:name])
+
+    #@recipe.recipe_ingredients[0].recipe_id = ing
+    
     if @recipe.save
-      # ing = Ingredient.create(name: params[:recipe][:ingredients][:name])
       # # q = Quantity.create(quantity: params[:recipe][:quantities][:quantity])
       # # u = Unity.create(unity: params[:recipe][:unities][:unity])
       # @recipe.recipe_ingredients.create(
