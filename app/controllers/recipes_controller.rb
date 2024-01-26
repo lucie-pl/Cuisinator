@@ -12,7 +12,6 @@ class RecipesController < ApplicationController
 
   def create
     @recipe = Recipe.new(recipe_params)
-    debugger
     if @recipe.save
      # ing = Ingredient.create(name: params[:recipe][:ingredients][:name])
       # q = Quantity.create(quantity: params[:recipe][:quantities][:quantity])
