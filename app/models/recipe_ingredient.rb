@@ -11,4 +11,11 @@ class RecipeIngredient < ApplicationRecord
     @ingredients_name = name
     self.ingredient = Ingredient.find_or_create_by(name)
   end
+
+  validates_presence_of :recipe
+  validates :ingredient_id, :unity, :quantity, presence: true
+  validates :unity, presence: true, inclusion: { in: %w(ml cl l g kg cup tsp Tbsp) }
+  validates :quantity, presence: true, numericality: { greater_than: 0 }
+
+
 end
