@@ -21,7 +21,7 @@
   <p>
     <% @recipe.recipe_ingredients.each do |ri| %>
     <ul>
-      <li><%= ri.ingredient.name %> <%= ri.quantity.quantity %> <%= ri.unity.unity %></li>
+      <li><%= ri.ingredient.name %>: <%= ri.quantity %> <%= ri.unity %></li>
     </ul>
     <% end %>
   </p>
@@ -35,7 +35,9 @@
 
 
 <br><br>
-<%= link_to "< Back to recipes' list", recipes_path %>
+<%= link_to "Modifier la recette", edit_recipe_path %>
+<br><br>
+<%= link_to "< Voir d'autres recettes", recipes_path %>
 </div>
 
 
