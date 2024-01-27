@@ -1,8 +1,11 @@
 class RecipeIngredient < ApplicationRecord
   belongs_to :recipe
   belongs_to :ingredient
-  belongs_to :unity
-  belongs_to :quantity
 
-  validates :recipe_id, :ingredient_id, :unity_id, :quantity_id, presence: true
+  validates :recipe, :ingredient, presence: true, on: :create
+  validates :recipe_id, :ingredient_id, presence: true, on: :update
+  validates :unity, presence: true, inclusion: { in: %w(ml cl L g kg cup tsp Tbsp) }
+  validates :quantity, presence: true, numericality: { greater_than: 0 }
+
+  accepts_nested_attributes_for :ingredient, allow_destroy: false
 end
