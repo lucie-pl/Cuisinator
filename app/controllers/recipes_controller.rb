@@ -56,7 +56,7 @@ class RecipesController < ApplicationController
         :quantity,
         :_destroy,
         :unity,
-        ingredients: [:name]
+        ingredient_attributes: [:name]
       ]
     )
   end

@@ -12,18 +12,8 @@
           <%= render 'recipe_ingredient_fields', f: ri %>
         <% end %>
         <p><%= cocooned_add_item_link 'Ajouter un ingrédient', f, :recipe_ingredients %></p>
-      <!--
-      <%= f.fields_for :ingredients do |ing| %>
-        <%= ing.label :name, "Ingrédient" %>
-        <%= ing.text_field :name %>
-      <% end %>
-        <%= f.label :quantity, "Quantité" %>
-        <%= f.text_field :quantity %>
-        <%= f.label :unity, "Unité" %>
-        <%= f.text_field :unity %>
-      -->
+      </div>
     <% end %>
-     </div>
 
     <!-- Recipe fields-->
     <%= f.label :instruction, "Instructions" %>
