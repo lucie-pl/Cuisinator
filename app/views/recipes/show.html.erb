@@ -37,6 +37,11 @@
 <br><br>
 <%= link_to "Modifier la recette", edit_recipe_path %>
 <br><br>
+<%= link_to "Supprimer la recette",
+  recipe_path(@recipe),
+  data: {turbo_method: :delete, turbo_confirm: "Es-tu sûr.e ?"}
+%>
+<br><br>
 <%= link_to "< Voir d'autres recettes", recipes_path %>
 </div>
 

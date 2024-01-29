@@ -7,7 +7,7 @@
   <%= f.text_field :description %>
 
    <!-- Recipe_ingredients fields-->
-  <%= cocooned_container do %>
+  <%= cocooned_container(data: { controller: 'cocooned'}) do %>
     <%= f.fields_for :recipe_ingredients do |ri| %>
       <%= render 'recipe_ingredient_fields', f: ri %>
     <% end %>

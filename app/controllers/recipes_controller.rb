@@ -1,5 +1,5 @@
 class RecipesController < ApplicationController
-  before_action :set_recipe, only: [:show, :edit, :update]
+  before_action :set_recipe, only: [:show, :edit, :update, :destroy]
   def index
     @recipes = Recipe.all
   end
@@ -22,12 +22,13 @@ class RecipesController < ApplicationController
 
   def update
     @recipe.update(recipe_params)
-    debugger
     redirect_to recipe_path(@recipe)
   end
 
-  # def destroy
-  # end
+  def destroy
+    @recipe.destroy
+    redirect_to @recipe
+  end
 
   private
 
@@ -46,9 +47,9 @@ class RecipesController < ApplicationController
         :recipe_id,
         :ingredient_id,
         :quantity,
-        :unity,
         :_destroy,
-        ingredient_attributes: [:name],
+        :unity,
+        ingredient_attributes: [:name, :ingredient_id],
       ]
     )
   end
