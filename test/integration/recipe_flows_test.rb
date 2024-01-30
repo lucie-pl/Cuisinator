@@ -1,28 +1,21 @@
 require 'test_helper'
 
 class RecipeFlowsTest < ActionDispatch::IntegrationTest
-  test 'can we see recipes page' do
+  test 'can see recipes page' do
     get recipes_path
     assert_select 'h1', 'TOUTES LES RECETTES'
   end
 
-  test 'can we see the list of recipes' do
+  test 'can see the list of all recipes' do
     get '/recipes'
     assert_select 'li'
   end
 
-  # test "should create Recipe" do
-  #   visit recipes_path
-
-  #   click_on "< Ajouter un nouvelle recette"
-
-  #   fill_in "Title", with: "Creating a recipe"
-  #   fill_in "Description", with: "Created this recipe successfully!"
-
-  #   click_on "Ajouter ma recette"
-
-  #   assert_text "Creating a recipe"
-  # end
+  test 'can see a specific recipe' do
+    recipe = recipes(:omelette)
+    get recipe_path(recipe)
+    assert_response :success
+  end
 
   test 'can create a recipe' do
     get '/recipes/new'
@@ -30,15 +23,33 @@ class RecipeFlowsTest < ActionDispatch::IntegrationTest
 
     post '/recipes',
       params: { recipe: {
-        title: 'can create',
-        description: 'recipe successfully.',
+        title: 'Omelette',
+        description: 'Une bonne omelette maison.',
         instruction: '1- Verser. 2- Mélanger',
-        image: 'test.png' }
+        image: 'https://test.com' }
       }
     assert_response :redirect
     follow_redirect!
     assert_response :success
-    assert_select 'h1', 'Title:\n  can create'
+    assert_select 'h1', 'Omelette'
   end
 
+  test 'can update a recipe' do
+    recipe = recipes(:omelette)
+    patch recipe_path(recipe), params: { recipe: { title: "New omelette recipe" } }
+
+    assert_redirected_to recipe_path(recipe)
+    # Reload association to fetch updated data and assert that title is updated.
+    recipe.reload
+    assert_equal "New omelette recipe", recipe.title
+  end
+
+  test 'can delete a recipe' do
+    recipe = recipes(:omelette)
+    assert_difference("Recipe.count", -1) do
+      delete recipe_path(recipe)
+    end
+
+    assert_redirected_to recipes_path
+  end
 end
