@@ -6,7 +6,13 @@ sandwich_jambon:
   instruction: 'inst.'
   image: 'my image'
 
-two:
+omelette:
+  title: 'omelette aux oeufs frais'
+  description: 'des oeufs'
+  instruction: 'inst.'
+  image: 'my image'
+
+one:
   title: MyString
   description: MyString
   instruction: MyString

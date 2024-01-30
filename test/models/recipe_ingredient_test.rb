@@ -2,7 +2,7 @@ require "test_helper"
 
 class RecipeIngredientTest < ActiveSupport::TestCase
   test "should have a recipe id, ingredient id, a unity and a quantity" do
-    r_i = recipe_ingredients(:one)
+    r_i = recipe_ingredients(:ri_pain)
     assert r_i.valid?
   end
 end
