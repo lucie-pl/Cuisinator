@@ -6,8 +6,8 @@ class RecipesController < ApplicationController
 
   def new
     @recipe = Recipe.new
-    ri = @recipe.recipe_ingredients.build
-    ri.build_ingredient(params[:recipe_ingredients_attributes])
+    recipe_ingredient = @recipe.recipe_ingredients.build
+    recipe_ingredient.build_ingredient(params[:recipe_ingredients_attributes])
   end
 
   def create

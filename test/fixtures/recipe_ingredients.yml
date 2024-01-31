@@ -6,7 +6,7 @@ one:
   unity: 'g'
   quantity: 100
 
-ri_pain:
+recipe_ingredient_bread:
   recipe: sandwich_jambon
   ingredient: pain
   unity: 'kg'
