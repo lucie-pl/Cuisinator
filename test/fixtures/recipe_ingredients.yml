@@ -3,11 +3,11 @@
 one:
   recipe: one
   ingredient: one
-  unity: one
-  quantity: one
+  unity: 'g'
+  quantity: 100
 
-ri_pain:
+recipe_ingredient_bread:
   recipe: sandwich_jambon
   ingredient: pain
-  unity: un
-  quantity: no_unit
+  unity: 'kg'
+  quantity: 50.5

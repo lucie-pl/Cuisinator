@@ -11,10 +11,6 @@
 Recipe.destroy_all
 RecipeIngredient.destroy_all
 Ingredient.destroy_all
-Unity.destroy_all
-Quantity.destroy_all
-
-
 
 ##INGREDIENTS
 #Épices
@@ -96,22 +92,17 @@ gratin_courgettes = Recipe.create(
   image: 'https://assets.afcdn.com/recipe/20190529/93185_w600.jpg'
 )
 
-##UNITIES
-ml = Unity.create(unity: "ml")
-
-##QUANTITIES
-q_one = Quantity.create(quantity: 1)
 
 ##RECIPE_INGREDIENTS
 recipe_gratin_courgettes = RecipeIngredient.create(
   recipe_id: gratin_courgettes.id,
   ingredient_id: courgette.id,
-  unity_id: ml.id,
-  quantity_id: q_one.id
+  unity: 'g',
+  quantity: 250
 )
 recipe_gratin_courgettes_two = RecipeIngredient.create(
   recipe_id: gratin_courgettes.id,
   ingredient_id: gruyere.id,
-  unity_id: ml.id,
-  quantity_id: q_one.id
+  unity: 'g',
+  quantity: 50
 )

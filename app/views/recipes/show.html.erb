@@ -19,9 +19,9 @@
 
 <div id="recipe-ingredients">
   <p>
-    <% @recipe.recipe_ingredients.each do |ri| %>
+    <% @recipe.recipe_ingredients.each do |recipe_ingredient| %>
     <ul>
-      <li><%= ri.ingredient.name %> <%= ri.quantity.quantity %> <%= ri.unity.unity %></li>
+      <li><%= recipe_ingredient.ingredient.name %>: <%= recipe_ingredient.quantity %> <%= recipe_ingredient.unity %></li>
     </ul>
     <% end %>
   </p>
@@ -35,7 +35,14 @@
 
 
 <br><br>
-<%= link_to "< Back to recipes' list", recipes_path %>
+<%= link_to "Modifier la recette", edit_recipe_path %>
+<br><br>
+<%= link_to "Supprimer la recette",
+  recipe_path(@recipe),
+  data: {turbo_method: :delete, turbo_confirm: "Es-tu sûr.e ?"}
+%>
+<br><br>
+<%= link_to "Voir d'autres recettes", recipes_path %>
 </div>
 
 

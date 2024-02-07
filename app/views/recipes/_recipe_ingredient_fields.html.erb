@@ -1,0 +1,22 @@
+<div class="container">
+  <%= cocooned_item do %>
+    <div id="ingredient">
+      <%= f.fields_for :ingredient_attributes do |ing| %>
+        <%= ing.label :name, "Ingrédient" %>
+        <%= ing.text_field :name %>
+      <% end %>
+    </div>
+
+    <div id="quantity">
+      <%= f.label :quantity, "Quantité" %>
+      <%= f.text_field :quantity %>
+    </div>
+
+    <div id="unity">
+      <%= f.label :unity, "Unité" %>
+      <%= f.text_field :unity %>
+    </div>
+
+    <%= cocooned_remove_item_link 'Supprimer', f %>
+  <% end %>
+</div>

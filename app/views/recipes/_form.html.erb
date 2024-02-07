@@ -1,0 +1,25 @@
+<%= form_with(model: recipe, data: {turbo: false}) do |f| %>
+  <!-- Recipe fields-->
+  <%= f.label :title, "Titre" %>
+  <%= f.text_field :title %>
+
+  <%= f.label :description %>
+  <%= f.text_field :description %>
+
+   <!-- Recipe_ingredients fields-->
+  <%= cocooned_container(data: { controller: 'cocooned'}) do %>
+    <%= f.fields_for :recipe_ingredients do |ri| %>
+      <%= render 'recipe_ingredient_fields', f: ri %>
+    <% end %>
+    <p><%= cocooned_add_item_link 'Ajouter un ingrédient', f, :recipe_ingredients %></p>
+  <% end %>
+
+   <!-- Recipe fields-->
+  <%= f.label :instruction, "Instructions" %>
+  <%= f.text_field :instruction %>
+
+  <%= f.label :image, "Image" %>
+  <%= f.text_field :image, placeholder: "Entrer l'url de l'image" %>
+
+  <%= f.submit "Ajouter ma recette" %>
+<% end %>
