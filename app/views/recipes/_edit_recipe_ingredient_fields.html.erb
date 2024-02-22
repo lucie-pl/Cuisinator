@@ -1,0 +1,27 @@
+<div class="container">
+  <%= cocooned_item do %>
+    <div id="ingredient">
+      <%= f.fields_for :ingredient do |ing| %>
+        <%= ing.label :name, "Ingrédient" %>
+        <%= ing.text_field :name %>
+      <% end %>
+    </div>
+
+    <div id="quantity">
+      <%= f.label :quantity, "Quantité" %>
+      <%= f.text_field :quantity %>
+    </div>
+
+    <div id="unity">
+      <%= f.label :unity, "Unité" %>
+      <%= f.text_field :unity %>
+    </div>
+
+    <%= cocooned_remove_item_link 'Supprimer l\'ingrédient', f, method: :delete %>
+
+    <%# <%= link_to "Supprimer l'ingrédient'",
+    recipe_recipe_ingredient_path(@recipe_ingredient),
+    data: {turbo_method: :delete, turbo_confirm: "Es-tu sûr.e ?"}
+    %>
+  <% end %>
+</div>
