@@ -88,7 +88,6 @@ mirin = Ingredient.create(name:'mirin');
 gratin_courgettes = Recipe.create(
   title: 'Gratin de courgettes',
   description: 'Un bon gratin de courgettes!',
-  instruction: '1-Emincer les oignons. 2-Les faire fondre dans le beurre. 3-Râper 4 courgettes avec leur peau. 4-Les ajouter aux oignons. 5-Préchauffer le four à 200°C (thermostat 6-7). 6-Mélanger le gruyère râpé, les oeufs, la crème fraîche, puis saler et poivrer. 7-Mettre les courgettes dans un plat et verser par dessus la sauce et faire à four chaud pendant 15 min.',
   image: 'https://assets.afcdn.com/recipe/20190529/93185_w600.jpg'
 )
 
