@@ -1,0 +1,15 @@
+<div class="container">
+  <%= cocooned_item do %>
+    <div id="step">
+      <%= f.label :step, "Étape" %>
+      <%= f.text_field :step %>
+    </div>
+
+    <div id="instruction">
+      <%= f.label :instruction, "Instruction" %>
+      <%= f.text_field :instruction %>
+    </div>
+
+    <%= cocooned_remove_item_link 'Supprimer cette instruction', f %>
+  <% end %>
+</div>

@@ -18,19 +18,19 @@
 </div>
 
 <div id="recipe-ingredients">
-  <p>
-    <% @recipe.recipe_ingredients.each do |recipe_ingredient| %>
     <ul>
+    <% @recipe.recipe_ingredients.each do |recipe_ingredient| %>
       <li><%= recipe_ingredient.ingredient.name %>: <%= recipe_ingredient.quantity %> <%= recipe_ingredient.unity %></li>
-    </ul>
     <% end %>
-  </p>
+    </ul>
 </div>
 
 <div id="recipe-instruction">
-  <p>
-    <%= @recipe.instruction %>
-  </p>
+    <ul>
+    <% @recipe.instructions.each do |instruction| %>
+      <li>Étape <%= instruction.step %>: <%= instruction.instruction %></li>
+    <% end %>
+    </ul>
 </div>
 
 
