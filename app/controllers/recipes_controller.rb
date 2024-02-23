@@ -1,5 +1,6 @@
 class RecipesController < ApplicationController
-  before_action :set_recipe, only: [:show, :edit, :update, :destroy]
+  before_action :set_recipe, only: [:show, :update, :destroy]
+
   def index
     @recipes = Recipe.all
   end
@@ -19,10 +20,17 @@ class RecipesController < ApplicationController
     end
   end
 
+  def edit
+    @recipe = Recipe.find(params[:id])
+
+  end
 
   def update
-    @recipe.update(recipe_params)
-    redirect_to recipe_path(@recipe)
+    if @recipe.update(recipe_params)
+      redirect_to recipe_path(@recipe)
+    else
+      render :edit
+    end
   end
 
   def destroy
@@ -47,9 +55,9 @@ class RecipesController < ApplicationController
         :recipe_id,
         :ingredient_id,
         :quantity,
-        :_destroy,
         :unity,
-        ingredient_attributes: [:name, :ingredient_id],
+        :_destroy,
+        ingredient_attributes: [:name, :ingredient_id]
       ]
     )
   end

@@ -7,7 +7,7 @@ class RecipeIngredient < ApplicationRecord
   validates :unity, presence: true, inclusion: { in: %w(ml cl L g kg cup tsp Tbsp) }
   validates :quantity, presence: true, numericality: { greater_than: 0 }
 
-  accepts_nested_attributes_for :ingredient, allow_destroy: false
+  accepts_nested_attributes_for :ingredient
 
   def ingredient_attributes=(name)
     self.ingredient = Ingredient.find_or_initialize_by(name)
