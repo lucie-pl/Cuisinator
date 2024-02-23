@@ -28,10 +28,7 @@ class RecipesController < ApplicationController
   end
 
   def update
-    # mark_recipe_ingredient_for_destruction
     if @recipe.update(recipe_params)
-      raise
-      @recipe.reload
       redirect_to recipe_path(@recipe)
     else
       render :edit
@@ -49,14 +46,6 @@ class RecipesController < ApplicationController
     @recipe = Recipe.find(params[:id])
   end
 
-  def mark_recipe_ingredient_for_destruction
-    @recipe.recipe_ingredients.each do |recipe_ingredient|
-      if recipe_ingredient.destroy == true
-        recipe_ingredient.mark_for_destruction
-      end
-    end
-  end
-
   def recipe_params
     params.require(:recipe).permit(
       :title,
@@ -68,8 +57,8 @@ class RecipesController < ApplicationController
         :recipe_id,
         :ingredient_id,
         :quantity,
-        :_destroy,
         :unity,
+        :_destroy,
         ingredient_attributes: [:name, :ingredient_id]
       ]
     )
