@@ -1,8 +1,6 @@
 class RecipesController < ApplicationController
   before_action :set_recipe, only: [:show, :update, :destroy]
 
-  # before_update :mark_recipe_ingredient_for_destruction
-
   def index
     @recipes = Recipe.all
   end
