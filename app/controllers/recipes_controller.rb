@@ -1,6 +1,8 @@
 class RecipesController < ApplicationController
   before_action :set_recipe, only: [:show, :update, :destroy]
 
+  # before_update :mark_recipe_ingredient_for_destruction
+
   def index
     @recipes = Recipe.all
   end
@@ -9,7 +11,6 @@ class RecipesController < ApplicationController
     @recipe = Recipe.new
     recipe_ingredient = @recipe.recipe_ingredients.build
     recipe_ingredient.build_ingredient(params[:recipe_ingredients_attributes])
-    @recipe.instructions.build
   end
 
   def create
@@ -23,6 +24,7 @@ class RecipesController < ApplicationController
 
   def edit
     @recipe = Recipe.find(params[:id])
+
   end
 
   def update
@@ -48,14 +50,8 @@ class RecipesController < ApplicationController
     params.require(:recipe).permit(
       :title,
       :description,
+      :instruction,
       :image,
-      instructions_attributes: [
-        :id,
-        :recipe_id,
-        :step,
-        :instruction,
-        :_destroy
-      ],
       recipe_ingredients_attributes: [
         :id,
         :recipe_id,
@@ -63,7 +59,7 @@ class RecipesController < ApplicationController
         :quantity,
         :unity,
         :_destroy,
-        ingredient_attributes: [:name, :ingredient_id]
+        { ingredient_attributes: %i[name ingredient_id] }
       ]
     )
   end
