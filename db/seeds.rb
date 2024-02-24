@@ -9,6 +9,7 @@
 #   end
 
 Recipe.destroy_all
+Instruction.destroy_all
 RecipeIngredient.destroy_all
 Ingredient.destroy_all
 
@@ -104,4 +105,16 @@ recipe_gratin_courgettes_two = RecipeIngredient.create(
   ingredient_id: gruyere.id,
   unity: 'g',
   quantity: 50
+)
+
+##INSTRUCTIONS
+inst_one = Instruction.create(
+  step: 1,
+  instruction: 'Râper les courgettes',
+  recipe_id: gratin_courgettes.id
+)
+inst_two = Instruction.create(
+  step: 2,
+  instruction: 'Mélanger et cuire au four à 180 degré pendant 20 minutes',
+  recipe_id: gratin_courgettes.id
 )
