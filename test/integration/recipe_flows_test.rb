@@ -12,12 +12,12 @@ class RecipeFlowsTest < ActionDispatch::IntegrationTest
   end
 
   test 'can see a specific recipe' do
-    recipe = recipes(:omelette)
+    recipe = recipes(:sandwich_jambon)
     get recipe_path(recipe)
     assert_response :success
   end
 
-  test 'can create a recipe' do
+  test 'can create a recipe, with nested attributes' do
     get '/recipes/new'
     assert_response :success
 
@@ -25,9 +25,20 @@ class RecipeFlowsTest < ActionDispatch::IntegrationTest
       params: { recipe: {
         title: 'Omelette',
         description: 'Une bonne omelette maison.',
-        instruction: '1- Verser. 2- Mélanger',
-        image: 'https://test.com' }
-      }
+        image: 'https://test.com',
+        instructions_attributes: [
+          step: 1,
+          instruction: 'Mélanger les oeufs'
+        ],
+        recipe_ingredients_attributes: [
+          quantity: 3,
+          unity: 'ml',
+          ingredient_attributes: {
+            name: 'oeuf'
+          }
+        ]
+      } }
+
     assert_response :redirect
     follow_redirect!
     assert_response :success

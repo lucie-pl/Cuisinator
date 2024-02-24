@@ -1,11 +1,11 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
+instruction_one:
   step: 1
-  instruction: MyString
-  recipe: one
+  instruction: 'Cook the eggs'
+  recipe: omelette
 
 two:
-  step: 1
+  step: 2
   instruction: MyString
-  recipe: two
+  recipe: sandwich_jambon
