@@ -14,9 +14,13 @@
     <p><%= cocooned_add_item_link 'Ajouter un ingrédient', f, :recipe_ingredients %></p>
   <% end %>
 
-   <!-- Recipe fields-->
-  <%= f.label :instruction, "Instructions" %>
-  <%= f.text_field :instruction %>
+   <!-- Instructions fields-->
+   <%= cocooned_container(data: { controller: 'cocooned'}) do %>
+    <%= f.fields_for :instructions do |instruction| %>
+      <%= render 'instruction_fields', f: instruction %>
+    <% end %>
+    <p><%= cocooned_add_item_link 'Ajouter une instruction', f, :instructions %></p>
+  <% end %>
 
   <%= f.label :image, "Image" %>
   <%= f.text_field :image, placeholder: "Entrer l'url de l'image" %>

@@ -57,7 +57,7 @@ class RecipesController < ApplicationController
         :quantity,
         :unity,
         :_destroy,
-        ingredient_attributes: [:name, :ingredient_id]
+        { ingredient_attributes: %i[name ingredient_id] }
       ]
     )
   end

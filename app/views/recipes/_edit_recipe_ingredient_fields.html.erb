@@ -14,7 +14,7 @@
 
     <div id="unity">
       <%= f.label :unity, "Unité" %>
-      <%= f.text_field :unity %>
+      <%= f.select :unity, ['ml', 'cl', 'L', 'g', 'kg', 'cup', 'tsp', 'Tbsp'] %>
     </div>
 
     <%= cocooned_remove_item_link 'Supprimer l\'ingrédient', f, method: :delete %>

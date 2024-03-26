@@ -9,7 +9,6 @@ Rails.application.routes.draw do
   root to: "pages#home"
 
   resources :recipes do
-    resources :recipe_ingredients, only: [:show]
     resources :my_recipes, only: [:create]
   end
 

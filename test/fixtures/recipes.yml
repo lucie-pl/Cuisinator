@@ -3,17 +3,14 @@
 sandwich_jambon:
   title: 'sandwich au jambon'
   description: 'du pain et du jambon'
-  instruction: 'inst.'
-  image: 'my image'
+  image: 'https://test.com'
 
 omelette:
   title: 'omelette aux oeufs frais'
   description: 'des oeufs'
-  instruction: 'inst.'
   image: 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.tellwut.com%2Fuploads%2Fmedia%2Fimage%2F98932e1390453097o5009.jpg&f=1&nofb=1&ipt=0090e81d61f9ccd1ff4d9167dca38a5a1bd5db842a2cd789b8303ca2da52daec&ipo=images'
 
 one:
   title: MyString
   description: MyString
-  instruction: MyString
   image: MyString
