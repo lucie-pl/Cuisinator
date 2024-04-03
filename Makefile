@@ -10,3 +10,6 @@ build-dev:
 
 run-dev:
 	docker run -it cuisinator-dev
+
+shell:
+	docker run -it -v `pwd`:/rails cuisinator-dev bash
