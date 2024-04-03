@@ -13,3 +13,12 @@ run-dev:
 
 shell:
 	docker run -it -v `pwd`:/rails cuisinator-dev bash
+
+check:
+	docker run -it cuisinator-dev \
+		reek \
+		&& rubocop \
+		&& brakeman --no-pager
+
+format:
+	docker run -it -v `pwd`:/rails cuisinator-dev rubocop -a
