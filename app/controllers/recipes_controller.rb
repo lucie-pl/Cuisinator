@@ -3,6 +3,7 @@ class RecipesController < ApplicationController
 
   def index
     @recipes = Recipe.all
+    # render json: @recipes
   end
 
   def new
@@ -14,7 +15,7 @@ class RecipesController < ApplicationController
   def create
     @recipe = Recipe.new(recipe_params)
     if @recipe.save
-      redirect_to @recipe, notice: 'Recipe was succesfully created'
+      render json: @recipe
     else
       render :new
     end
@@ -27,7 +28,7 @@ class RecipesController < ApplicationController
 
   def update
     if @recipe.update(recipe_params)
-      redirect_to recipe_path(@recipe)
+      render json: @recipe
     else
       render :edit
     end
@@ -35,13 +36,13 @@ class RecipesController < ApplicationController
 
   def destroy
     @recipe.destroy
-    redirect_to @recipe
   end
 
   private
 
   def set_recipe
     @recipe = Recipe.find(params[:id])
+    render json: @recipe
   end
 
   def recipe_params
