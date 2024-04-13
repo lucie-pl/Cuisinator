@@ -3,7 +3,11 @@ class RecipesController < ApplicationController
 
   def index
     @recipes = Recipe.all
-    # render json: @recipes
+    render json: @recipes
+  end
+
+  def show
+    render json: @recipe
   end
 
   def new
@@ -15,22 +19,23 @@ class RecipesController < ApplicationController
   def create
     @recipe = Recipe.new(recipe_params)
     if @recipe.save
-      render json: @recipe
+      render json: @recipe, status: :created, location: @recipe
     else
-      render :new
+      # render :new
+      render json: @recipe.errors, status: :unprocessable_entity
     end
   end
 
   def edit
     @recipe = Recipe.find(params[:id])
-
   end
 
   def update
     if @recipe.update(recipe_params)
       render json: @recipe
     else
-      render :edit
+      # render :edit
+      render json: @recipe.errors, status: :unprocessable_entity
     end
   end
 
@@ -42,7 +47,6 @@ class RecipesController < ApplicationController
 
   def set_recipe
     @recipe = Recipe.find(params[:id])
-    render json: @recipe
   end
 
   def recipe_params
