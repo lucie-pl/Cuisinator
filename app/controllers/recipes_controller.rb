@@ -6,9 +6,9 @@ class RecipesController < ApplicationController
     render json: @recipes
   end
 
-  def show
-    render json: @recipe
-  end
+  # def show
+  #   render json: @recipe
+  # end
 
   def new
     @recipe = Recipe.new
@@ -19,7 +19,8 @@ class RecipesController < ApplicationController
   def create
     @recipe = Recipe.new(recipe_params)
     if @recipe.save
-      render json: @recipe, status: :created, location: @recipe
+      redirect_to @recipe, notice: 'Recipe was succesfully created'
+      # render json: @recipe, status: :created, location: @recipe
     else
       # render :new
       render json: @recipe.errors, status: :unprocessable_entity
@@ -32,7 +33,8 @@ class RecipesController < ApplicationController
 
   def update
     if @recipe.update(recipe_params)
-      render json: @recipe
+      redirect_to recipe_path(@recipe)
+      # render json: @recipe
     else
       # render :edit
       render json: @recipe.errors, status: :unprocessable_entity
