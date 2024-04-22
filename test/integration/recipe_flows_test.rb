@@ -17,7 +17,7 @@ class RecipeFlowsTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test 'can create a recipe, with nested attributes' do
+  test 'can create a recipe with nested attributes' do
     get '/recipes/new'
     assert_response :success
 
