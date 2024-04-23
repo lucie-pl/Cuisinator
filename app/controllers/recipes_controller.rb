@@ -6,35 +6,36 @@ class RecipesController < ApplicationController
     render json: @recipes
   end
 
-  # def show
-  #   render json: @recipe
-  # end
-
-  def new
-    @recipe = Recipe.new
-    recipe_ingredient = @recipe.recipe_ingredients.build
-    recipe_ingredient.build_ingredient(params[:recipe_ingredients_attributes])
+  def show
+    if @recipe
+      render json: @recipe, status: :ok
+    else
+      render json: { errors: @recipe.errors.full_messages }, status: :unprocessable_entity
+    end
   end
+
+  # def new
+  #   @recipe = Recipe.new
+  #   recipe_ingredient = @recipe.recipe_ingredients.build
+  #   recipe_ingredient.build_ingredient(params[:recipe_ingredients_attributes])
+  # end
 
   def create
     @recipe = Recipe.new(recipe_params)
     if @recipe.save
-      redirect_to @recipe, notice: 'Recipe was succesfully created'
-      # render json: @recipe, status: :created, location: @recipe
+      render json: @recipe, status: :created
     else
-      # render :new
-      render json: @recipe.errors, status: :unprocessable_entity
+      render json: { errors: @recipe.errors.full_messages }, status: :unprocessable_entity
     end
   end
 
-  def edit
-    @recipe = Recipe.find(params[:id])
-  end
+  # def edit
+  #   @recipe = Recipe.find(params[:id])
+  # end
 
   def update
-    if @recipe.update(recipe_params)
-      redirect_to recipe_path(@recipe)
-      # render json: @recipe
+    if recipe.update(recipe_params)
+      render json: @recipe
     else
       # render :edit
       render json: @recipe.errors, status: :unprocessable_entity
@@ -43,6 +44,7 @@ class RecipesController < ApplicationController
 
   def destroy
     @recipe.destroy
+    head :no_content
   end
 
   private
