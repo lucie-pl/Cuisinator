@@ -3,29 +3,41 @@ class RecipesController < ApplicationController
 
   def index
     @recipes = Recipe.all
-    render json: @recipes
+    render json: @recipes, include:
+    [
+      recipe_ingredients: {
+        only: %i[quantity unity],
+        include: [ingredient: { only: %i[name id] }]
+      },
+      instructions: { only: %i[step instruction] }
+    ]
   end
 
   def show
     if @recipe
-      render json: @recipe, status: :ok
-    else
-      render json: { errors: @recipe.errors.full_messages }, status: :unprocessable_entity
+      render json: @recipe, status: :ok, include:
+      [
+        recipe_ingredients: {
+          only: %i[quantity unity],
+          include: [ingredient: { only: %i[name id] }]
+        },
+        instructions: { only: %i[step instruction] }
+      ]
     end
   end
 
-  # def new
-  #   @recipe = Recipe.new
-  #   recipe_ingredient = @recipe.recipe_ingredients.build
-  #   recipe_ingredient.build_ingredient(params[:recipe_ingredients_attributes])
-  # end
+  def new
+    @recipe = Recipe.new
+    recipe_ingredient = @recipe.recipe_ingredients.build
+    recipe_ingredient.build_ingredient(params[:recipe_ingredients_attributes])
+  end
 
   def create
     @recipe = Recipe.new(recipe_params)
     if @recipe.save
-      render json: @recipe, status: :created
+      render :show, status: :created
     else
-      render json: { errors: @recipe.errors.full_messages }, status: :unprocessable_entity
+      render_error
     end
   end
 
@@ -35,10 +47,9 @@ class RecipesController < ApplicationController
 
   def update
     if recipe.update(recipe_params)
-      render json: @recipe
+      render json: :show, status: :ok
     else
-      # render :edit
-      render json: @recipe.errors, status: :unprocessable_entity
+      render_error
     end
   end
 
@@ -58,10 +69,7 @@ class RecipesController < ApplicationController
       :title,
       :description,
       :image,
-      instructions_attributes: [
-        :step,
-        :instruction,
-      ],
+      instructions_attributes: %i[step instruction],
       recipe_ingredients_attributes: [
         :id,
         :recipe_id,
@@ -72,5 +80,9 @@ class RecipesController < ApplicationController
         { ingredient_attributes: %i[name ingredient_id] }
       ]
     )
+  end
+
+  def render_error
+    render json: { errors: @recipe.errors.full_messages }, status: :unprocessable_entity
   end
 end
