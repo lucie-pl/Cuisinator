@@ -1,6 +1,8 @@
-ENV["RAILS_ENV"] ||= "test"
-require_relative "../config/environment"
-require "rails/test_help"
+# frozen_string_literal: true
+
+ENV['RAILS_ENV'] ||= 'test'
+require_relative '../config/environment'
+require 'rails/test_help'
 
 module ActiveSupport
   class TestCase
@@ -18,7 +20,7 @@ class ActionController::TestCase
   include Devise::Test::IntegrationHelpers
 
   setup do
-      sign_in users(:bob)
+    sign_in users(:bob)
   end
 end
 
@@ -26,6 +28,6 @@ class ActionDispatch::IntegrationTest
   include Devise::Test::IntegrationHelpers
 
   setup do
-      sign_in users(:bob)
+    sign_in users(:bob)
   end
 end
