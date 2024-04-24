@@ -47,7 +47,7 @@ gem "bootsnap", require: false
 gem 'cocooned'
 gem 'devise'
 gem 'rubocop', require: false
-# gem 'brakeman'
+gem 'brakeman'
 # gem 'reek'
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
