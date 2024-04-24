@@ -48,7 +48,7 @@ gem 'cocooned'
 gem 'devise'
 gem 'rubocop', require: false
 gem 'brakeman'
-# gem 'reek'
+gem 'reek'
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
