@@ -1,19 +1,9 @@
-# This file should ensure the existence of records required to run the application in every environment (production,
-# development, test). The code here should be idempotent so that it can be executed at any point in every environment.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Example:
-#
-#   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
-#     MovieGenre.find_or_create_by!(name: genre_name)
-#   end
-
 Recipe.destroy_all
 Instruction.destroy_all
 RecipeIngredient.destroy_all
 Ingredient.destroy_all
 
-# #INGREDIENTS
+## INGREDIENTS
 # Épices
 Ingredient.create(name: 'poivre')
 Ingredient.create(name: 'sel')
@@ -84,15 +74,14 @@ Ingredient.create(name: 'vinaigre')
 Ingredient.create(name: 'vinaire de riz')
 Ingredient.create(name: 'mirin')
 
-
-##RECIPES
+## RECIPES
 gratin_courgettes = Recipe.create(
   title: 'Gratin de courgettes',
   description: 'Un bon gratin de courgettes!',
   image: 'https://assets.afcdn.com/recipe/20190529/93185_w600.jpg'
 )
 
-# #RECIPE_INGREDIENTS
+## RECIPE_INGREDIENTS
 RecipeIngredient.create(
   recipe_id: gratin_courgettes.id,
   ingredient_id: courgette.id,
@@ -106,7 +95,7 @@ RecipeIngredient.create(
   quantity: 50
 )
 
-# #INSTRUCTIONS
+## INSTRUCTIONS
 Instruction.create(
   step: 1,
   instruction: 'Râper les courgettes',

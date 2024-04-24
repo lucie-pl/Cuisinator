@@ -1,5 +1,5 @@
 class RecipesController < ApplicationController
-  before_action :set_recipe, only: [:show, :update, :destroy]
+  before_action :set_recipe, only: %i[show update destroy]
 
   def index
     @recipes = Recipe.all
@@ -22,7 +22,6 @@ class RecipesController < ApplicationController
 
   def edit
     @recipe = Recipe.find(params[:id])
-
   end
 
   def update
@@ -49,10 +48,7 @@ class RecipesController < ApplicationController
       :title,
       :description,
       :image,
-      instructions_attributes: [
-        :step,
-        :instruction,
-      ],
+      instructions_attributes: %i[step instruction],
       recipe_ingredients_attributes: [
         :id,
         :recipe_id,

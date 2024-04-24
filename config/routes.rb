@@ -13,9 +13,9 @@ Rails.application.routes.draw do
     resources :my_recipes, only: [:create]
   end
 
-  #TODO: add the my_recipes model and controller
-    # get "/my_recipes", to: "my_recipes#index"
-    # delete "/my_recipes/:id", to: "restaurants#destroy"
-    #TODO: Think about when we want to destroy a recipe saved. What's actual the path ?
-    # resources :my_recipes, only: [:index, :destroy]
+  # TODO: add the my_recipes model and controller
+  # get "/my_recipes", to: "my_recipes#index"
+  # delete "/my_recipes/:id", to: "restaurants#destroy"
+  # TODO: Think about when we want to destroy a recipe saved. What's actual the path ?
+  # resources :my_recipes, only: [:index, :destroy]
 end

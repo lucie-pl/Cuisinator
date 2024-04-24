@@ -26,17 +26,8 @@ class RecipeFlowsTest < ActionDispatch::IntegrationTest
         title: 'Omelette',
         description: 'Une bonne omelette maison.',
         image: 'https://test.com',
-        instructions_attributes: [
-          step: 1,
-          instruction: 'Mélanger les oeufs'
-        ],
-        recipe_ingredients_attributes: [
-          quantity: 3,
-          unity: 'ml',
-          ingredient_attributes: {
-            name: 'oeuf'
-          }
-        ]
+        instructions_attributes: [step: 1, instruction: 'Mélanger les oeufs'],
+        recipe_ingredients_attributes: [quantity: 3, unity: 'ml', ingredient_attributes: { name: 'oeuf' }]
       } }
 
     assert_response :redirect
