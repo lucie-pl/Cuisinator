@@ -55,8 +55,10 @@ m = Module.new do
 
   def lockfile_version
     return unless File.file?(lockfile)
+
     lockfile_contents = File.read(lockfile)
     return unless lockfile_contents =~ /\n\nBUNDLED WITH\n\s{2,}(#{Gem::Version::VERSION_PATTERN})\n/
+
     Regexp.last_match(1)
   end
 
@@ -86,6 +88,7 @@ m = Module.new do
       gem 'bundler', bundler_requirement
     end
     return if gem_error.nil?
+
     require_error = activation_error_handling do
       require 'bundler/version'
     end

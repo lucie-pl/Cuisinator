@@ -18,7 +18,7 @@ class ActionController::TestCase
   include Devise::Test::IntegrationHelpers
 
   setup do
-      sign_in users(:bob)
+    sign_in users(:bob)
   end
 end
 
@@ -26,6 +26,6 @@ class ActionDispatch::IntegrationTest
   include Devise::Test::IntegrationHelpers
 
   setup do
-      sign_in users(:bob)
+    sign_in users(:bob)
   end
 end
