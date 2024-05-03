@@ -1,0 +1,15 @@
+### Generic smell configuration
+
+detectors:
+  # You can disable smells completely
+  IrresponsibleModule:
+    enabled: false
+
+directories:
+  # Your other configuration....
+  'app/models':
+    InstanceVariableAssumption:
+      enabled: false
+
+exclude_paths:
+  - db/migrate

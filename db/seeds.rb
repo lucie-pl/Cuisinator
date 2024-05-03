@@ -1,119 +1,107 @@
-# This file should ensure the existence of records required to run the application in every environment (production,
-# development, test). The code here should be idempotent so that it can be executed at any point in every environment.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Example:
-#
-#   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
-#     MovieGenre.find_or_create_by!(name: genre_name)
-#   end
-
 Recipe.destroy_all
 Instruction.destroy_all
 RecipeIngredient.destroy_all
 Ingredient.destroy_all
 
-##INGREDIENTS
-#Épices
-poivre = Ingredient.create(name:'poivre');
-sel = Ingredient.create(name:'sel');
-sucre = Ingredient.create(name:'sucre');
-paprika = Ingredient.create(name:'paprika');
-curry = Ingredient.create(name:'curry');
-cumin = Ingredient.create(name:'cumin');
-tonka = Ingredient.create(name:'tonka');
-canelle = Ingredient.create(name:'canelle');
-muscade = Ingredient.create(name:'muscade');
-herbes_provence = Ingredient.create(name:'herbes de provence');
-basilic = Ingredient.create(name:'basilic');
-origan = Ingredient.create(name:'origan');
-thym = Ingredient.create(name:'thym');
-coriandre = Ingredient.create(name:'coriandre');
-aneth = Ingredient.create(name:'aneth');
-laurier = Ingredient.create(name:'feuille de laurier');
-beurre = Ingredient.create(name:'beurre');
+## INGREDIENTS
+# Épices
+Ingredient.create(name: 'poivre')
+Ingredient.create(name: 'sel')
+Ingredient.create(name: 'sucre')
+Ingredient.create(name: 'paprika')
+Ingredient.create(name: 'curry')
+Ingredient.create(name: 'cumin')
+Ingredient.create(name: 'tonka')
+Ingredient.create(name: 'canelle')
+Ingredient.create(name: 'muscade')
+Ingredient.create(name: 'herbes de provence')
+Ingredient.create(name: 'basilic')
+Ingredient.create(name: 'origan')
+Ingredient.create(name: 'thym')
+Ingredient.create(name: 'coriandre')
+Ingredient.create(name: 'aneth')
+Ingredient.create(name: 'feuille de laurier')
+Ingredient.create(name: 'beurre')
 
-#Laits, crèmes, fromages
-creme_fraiche = Ingredient.create(name:'crème fraîche');
-oeuf = Ingredient.create(name:'oeuf');
-lait = Ingredient.create(name:'lait');
-lait_soja = Ingredient.create(name:'lait de soja');
-lait_coco = Ingredient.create(name:'lait de coco');
-lait_amande = Ingredient.create(name:"lait d'amande");
-gruyere = Ingredient.create(name:'gruyère');
-comte = Ingredient.create(name:'comté');
-chevre = Ingredient.create(name:'chèvre');
-raclette = Ingredient.create(name:'fromage à raclette');
+# Laits, crèmes, fromages
+Ingredient.create(name: 'crème fraîche')
+Ingredient.create(name: 'oeuf')
+Ingredient.create(name: 'lait')
+Ingredient.create(name: 'lait de soja')
+Ingredient.create(name: 'lait de coco')
+Ingredient.create(name: "lait d'amande")
+gruyere = Ingredient.create(name: 'gruyère')
+Ingredient.create(name: 'comté')
+Ingredient.create(name: 'chèvre')
+Ingredient.create(name: 'fromage à raclette')
 
-#Légumes
-ail = Ingredient.create(name:"ail");
-avocat = Ingredient.create(name:"avocat");
-courgette = Ingredient.create(name:'courgette');
-concombre = Ingredient.create(name:'concombre');
-carotte = Ingredient.create(name:'carotte');
-echalotte = Ingredient.create(name:'échalotte');
-pomme_de_terre = Ingredient.create(name:'pomme de terre');
-chou_fleur = Ingredient.create(name:'chou-fleur');
-chou_chinois = Ingredient.create(name:'chou-chinois');
-courge = Ingredient.create(name:'courge');
-endive = Ingredient.create(name:'endive');
-epinard = Ingredient.create(name:'épinards');
-haricot_vert = Ingredient.create(name:'haricots vert');
-laitue = Ingredient.create(name:'laitue');
-oignon = Ingredient.create(name:'oignon');
-panais = Ingredient.create(name:'panais');
-poireau = Ingredient.create(name:'poireau');
-petit_pois = Ingredient.create(name:'petit pois');
-poivron = Ingredient.create(name:'poivron');
-potiron = Ingredient.create(name:'potiron');
-radis = Ingredient.create(name:'radis');
-rhubarbe = Ingredient.create(name:'rhubarbe');
-salsifis = Ingredient.create(name:'salsifis');
-topinambour = Ingredient.create(name:'topinambour');
+# Légumes
+Ingredient.create(name: 'ail')
+Ingredient.create(name: 'avocat')
+courgette = Ingredient.create(name: 'courgette')
+Ingredient.create(name: 'concombre')
+Ingredient.create(name: 'carotte')
+Ingredient.create(name: 'échalotte')
+Ingredient.create(name: 'pomme de terre')
+Ingredient.create(name: 'chou-fleur')
+Ingredient.create(name: 'chou-chinois')
+Ingredient.create(name: 'courge')
+Ingredient.create(name: 'endive')
+Ingredient.create(name: 'épinards')
+Ingredient.create(name: 'haricots vert')
+Ingredient.create(name: 'laitue')
+Ingredient.create(name: 'oignon')
+Ingredient.create(name: 'panais')
+Ingredient.create(name: 'poireau')
+Ingredient.create(name: 'petit pois')
+Ingredient.create(name: 'poivron')
+Ingredient.create(name: 'potiron')
+Ingredient.create(name: 'radis')
+Ingredient.create(name: 'rhubarbe')
+Ingredient.create(name: 'salsifis')
+Ingredient.create(name: 'topinambour')
 
-#Sauces et huiles
-sauce_soya = Ingredient.create(name:'sauce soya');
-sauce_huitre = Ingredient.create(name:"sauce d'huitres");
-huile_olives = Ingredient.create(name:"huile d'olives");
-huile_amande = Ingredient.create(name:"huile d'amande");
-huile_tournesol = Ingredient.create(name:'huile de tournesol');
-huile_sesame = Ingredient.create(name:'huile de sésame');
-huile_canola = Ingredient.create(name:'huile de canola');
-huile_coco = Ingredient.create(name:'huile de coco');
-vinaigre = Ingredient.create(name:'vinaigre');
-vinaire_riz = Ingredient.create(name:'vinaire de riz');
-mirin = Ingredient.create(name:'mirin');
+# Sauces et huiles
+Ingredient.create(name: 'sauce soya')
+Ingredient.create(name: "sauce d'huitres")
+Ingredient.create(name: "huile d'olives")
+Ingredient.create(name: "huile d'amande")
+Ingredient.create(name: 'huile de tournesol')
+Ingredient.create(name: 'huile de sésame')
+Ingredient.create(name: 'huile de canola')
+Ingredient.create(name: 'huile de coco')
+Ingredient.create(name: 'vinaigre')
+Ingredient.create(name: 'vinaire de riz')
+Ingredient.create(name: 'mirin')
 
-
-##RECIPES
+## RECIPES
 gratin_courgettes = Recipe.create(
   title: 'Gratin de courgettes',
   description: 'Un bon gratin de courgettes!',
   image: 'https://assets.afcdn.com/recipe/20190529/93185_w600.jpg'
 )
 
-
-##RECIPE_INGREDIENTS
-recipe_gratin_courgettes = RecipeIngredient.create(
+## RECIPE_INGREDIENTS
+RecipeIngredient.create(
   recipe_id: gratin_courgettes.id,
   ingredient_id: courgette.id,
   unity: 'g',
   quantity: 250
 )
-recipe_gratin_courgettes_two = RecipeIngredient.create(
+RecipeIngredient.create(
   recipe_id: gratin_courgettes.id,
   ingredient_id: gruyere.id,
   unity: 'g',
   quantity: 50
 )
 
-##INSTRUCTIONS
-inst_one = Instruction.create(
+## INSTRUCTIONS
+Instruction.create(
   step: 1,
   instruction: 'Râper les courgettes',
   recipe_id: gratin_courgettes.id
 )
-inst_two = Instruction.create(
+Instruction.create(
   step: 2,
   instruction: 'Mélanger et cuire au four à 180 degré pendant 20 minutes',
   recipe_id: gratin_courgettes.id
